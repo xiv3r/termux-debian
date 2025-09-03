@@ -1,4 +1,4 @@
-<img align="center" src="https://github.com/xiv3r/termux-ubuntu/blob/main/debain.jpg">
+<img align="center" src="https://github.com/xiv3r/termux-debian/blob/main/debain.jpg">
 
 # Requirements 
 - [Termux](https://github.com/termux/termux-app/releases)
