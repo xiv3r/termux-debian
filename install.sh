@@ -3,16 +3,10 @@
 # Tarball
 DISTRO=debian
 
-# Upgrade packages
-pkg upgrade -y
-
-# Install proot-distro first
-pkg install -y proot-distro
-
-# Install the distribution
-proot-distro install $DISTRO
-
 # Shortcut login - fixed variable usage
+sed -i '/termux-wake-lock/d' $PREFIX/etc/bash.bashrc
+sed -i '/clear/d' $PREFIX/etc/bash.bashrc
+sed -i '/proot-distro login $DISTRO/d' $PREFIX/etc/bash.bashrc
 cat >> $PREFIX/etc/bash.bashrc << EOF
 termux-wake-lock
 clear
@@ -45,5 +39,13 @@ rm -f $PREFIX/bin/uninstall-$DISTRO
 EOF
 chmod +x $PREFIX/bin/uninstall-$DISTRO
 
-# Login to the distribution
+# Upgrade packages
+pkg upgrade -y
+
+# Install proot-distro first
+pkg install -y proot-distro
+
+# Install the distribution
+proot-distro install $DISTRO
+sleep 5
 proot-distro login $DISTRO
